@@ -153,3 +153,8 @@ export function countChars(str: string)
     (counter[c] ?= 0)++
   counter
   
+export function abs(nr: number): number
+  Math.abs nr
+
+export function sign(nr: number): number
+  Math.sign nr

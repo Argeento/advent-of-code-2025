@@ -32,7 +32,9 @@ declare global {
   const int: typeof utils.int;
   const float: typeof utils.float;
   const multiply: typeof utils.multiply;
-  const countChars: typeof utils.countChars
+  const countChars: typeof utils.countChars;
+  const abs: typeof utils.abs;
+  const sign: typeof utils.sign
 
   // Lodash
   const templateSettings: typeof lodash.templateSettings;
