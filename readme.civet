@@ -1,8 +1,8 @@
 { Glob, file, write } from bun
 
-readme .= '# Advent of Code 2024
+readme .= '# Advent of Code 2025
 
-My solutions to the [AoC 2024](https://adventofcode.com/2024) challenges written in [Civet](https://civet.dev).
+My solutions to the [AoC 2025](https://adventofcode.com/2025) challenges written in [Civet](https://civet.dev).
 
 '
 glob := new Glob './src/[0-9]*'
@@ -17,6 +17,6 @@ ${code.trim()}
 
 `
 
-write './readme.md', readme.trim()
+write './readme.md', readme.trim() + '\n'
 
 console.log readme
