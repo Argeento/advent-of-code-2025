@@ -20,3 +20,17 @@ function countHundreds(a: number, b: number)
 
 log dialOnZero, dialCrossingZero
 ```
+
+## Day 2: Gift Shop ⭐⭐
+
+```ts
+ranges := toNumbers input |> toChunks 2
+
+function sumInvalidIds(pattern: RegExp)
+  sum for [start, end] of ranges
+    sum for id of [start..-end]
+      id if pattern.test id.toString()
+
+log sumInvalidIds /^(.*)\1$/
+log sumInvalidIds /^(.*)\1+$/
+```
