@@ -9,12 +9,12 @@ await plugin({
     const utilsSrc = await file('./src/utils.civet').text();
     const utilsExports = getExports(utilsSrc);
 
-    const lodashExports = Object.keys(lodash);
+    const lodashExports = Object.keys(lodash).filter((fn) => fn !== 'toNumber');
     const autoDts = createAutoImportDts(utilsExports, lodashExports);
 
     await write('./src/auto-import.d.ts', autoDts);
 
-    return builder.onLoad({ filter: /\.civet$/ }, async ({ path }) => {
+    builder.onLoad({ filter: /\.civet$/ }, async ({ path }) => {
       let source = await file(path).text();
 
       source =
@@ -42,7 +42,7 @@ function getExports(source: string) {
     exports.push(match[1] || match[2]);
   }
 
-  return exports;
+  return lodash.uniq(exports);
 }
 
 function createAutoImportDts(utilsExports: string[], lodashExports: string[]) {

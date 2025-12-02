@@ -8,7 +8,6 @@ declare global {
   const getArray2d: typeof utils.getArray2d;
   const asc: typeof utils.asc;
   const desc: typeof utils.desc;
-  const inRange: typeof utils.inRange;
   const getManhattanDistance: typeof utils.getManhattanDistance;
   const getDistance: typeof utils.getDistance;
   const match: typeof utils.match;
@@ -18,8 +17,6 @@ declare global {
   const toNumbers: typeof utils.toNumbers;
   const divisible: typeof utils.divisible;
   const getGcd: typeof utils.getGcd;
-  const getLcm: typeof utils.getLcm;
-  const getLcm: typeof utils.getLcm;
   const getLcm: typeof utils.getLcm;
   const adjacentPoints: typeof utils.adjacentPoints;
   const toKeys: typeof utils.toKeys;
@@ -31,10 +28,11 @@ declare global {
   const log: typeof utils.log;
   const int: typeof utils.int;
   const float: typeof utils.float;
-  const multiply: typeof utils.multiply;
+  const multiplyArr: typeof utils.multiplyArr;
   const countChars: typeof utils.countChars;
   const abs: typeof utils.abs;
-  const sign: typeof utils.sign
+  const sign: typeof utils.sign;
+  const toChunks: typeof utils.toChunks
 
   // Lodash
   const templateSettings: typeof lodash.templateSettings;
@@ -328,7 +326,6 @@ declare global {
   const toInteger: typeof lodash.toInteger;
   const toLength: typeof lodash.toLength;
   const toLower: typeof lodash.toLower;
-  const toNumber: typeof lodash.toNumber;
   const toSafeInteger: typeof lodash.toSafeInteger;
   const toString: typeof lodash.toString;
   const toUpper: typeof lodash.toUpper;

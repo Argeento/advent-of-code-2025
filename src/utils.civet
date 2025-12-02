@@ -21,9 +21,6 @@ export function asc(a: any, b: any): number
 export function desc(a: any, b: any): number
   b - a
 
-export function inRange(min: number, value: number, max: number): boolean 
-  min <= value <= max
-
 export function getManhattanDistance(
   a: Point,
   b: Point = x: 0, y: 0
@@ -144,7 +141,7 @@ export function int (nr: string): number
 export function float (nr: string): number
   parseFloat nr
 
-export function multiply(arr: number[]): number
+export function multiplyArr(arr: number[]): number
   arr.reduce (a, b) => a * b
 
 export function countChars(str: string)
@@ -158,3 +155,7 @@ export function abs(nr: number): number
 
 export function sign(nr: number): number
   Math.sign nr
+
+export function toChunks(size: number)
+  function a<T>(arr: T[])
+    chunk arr, size
