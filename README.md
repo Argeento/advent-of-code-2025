@@ -34,3 +34,17 @@ function sumInvalidIds(pattern: RegExp)
 log sumInvalidIds /^(.*)\1$/
 log sumInvalidIds /^(.*)\1+$/
 ```
+
+## Day 3: Lobby ⭐⭐
+
+```ts
+banks := getLines input
+
+function findMax(bank: string, turnOn: number, best = '')
+  return int best unless turnOn
+  bestIndex := indexOf bank, max bank[..-turnOn]
+  findMax bank[bestIndex<..], turnOn - 1, best + bank[bestIndex]
+
+log sum banks.map findMax ., 2
+log sum banks.map findMax ., 12
+```
