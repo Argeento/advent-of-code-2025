@@ -17,7 +17,8 @@ await plugin({
     builder.onLoad({ filter: /\.civet$/ }, async ({ path }) => {
       let source = await file(path).text();
 
-      source = `input from ./input.txt
+      if (path.includes('src')) {
+        source = `input from ./input.txt
 { ${utilsExports.join(', ')} } from ../utils.civet
 { ${lodashExports.join(', ')} } from lodash
 
@@ -30,6 +31,7 @@ __deltaTime := __endTime - __startTime
 if __deltaTime > 1
   log \`\\nExecution time: \${__deltaTime.toFixed(2)}ms\`
 `;
+      }
 
       return {
         contents: await compile(source),
