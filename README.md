@@ -48,3 +48,17 @@ function findMax(bank: string, turnOn: number, best = '')
 log sum banks.map findMax ., 2
 log sum banks.map findMax ., 12
 ```
+
+## Day 4: Printing Department ⭐⭐
+
+```ts
+grid .= getArray2d input
+rounds: number[] := []
+
+until rounds.-1 is 0
+  compact flatMap loop2d grid, (y, x, c) =>
+    {y, x} if c is '@' and adjacentPoints(grid, x, y).filter(.item is '@')# < 4
+  |> .map delete grid[&.y][&.x] |> .# |> rounds.push
+
+log rounds.0, sum rounds
+```
