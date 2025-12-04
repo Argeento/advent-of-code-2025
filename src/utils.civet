@@ -40,10 +40,10 @@ export function getColumn<T>(array: T[][], columnNumber: number): T[]
   for row of array
     row[columnNumber]
 
-export function loop2d<T>(
+export function loop2d<T, K>(
   array: T[][],
-  callback: (y: number, x: number, item: T) => void
-): void
+  callback: (y: number, x: number, item: T) => K
+)
   for y of [0...array.length]
     for x of [0...array[y]!.length]
       callback y, x, array[y]![x]!
@@ -159,3 +159,12 @@ export function sign(nr: number): number
 export function toChunks(size: number)
   function a<T>(arr: T[])
     chunk arr, size
+
+export class UniquePoints extends Array<Point> {
+  points := new Set<string>()
+
+  push(point: Point)
+    return this.length if this.points.has `${point.x},${point.y}`
+    this.points.add `${point.x},${point.y}`
+    super.push point
+}
