@@ -62,3 +62,20 @@ until rounds.-1 is 0
 
 log rounds.0, sum rounds
 ```
+
+## Day 5: Cafeteria ⭐⭐
+
+```ts
+[r, ingredients] := input.split('\n\n').map toNumbers
+ranges := r.map abs |> toChunks 2 |> .sort (a, b) => a.0 - b.0
+
+log sum for ingredient of ingredients
+  ranges.some [start, end] => inRange ingredient, start, end
+
+tmp .= ranges.0.0
+log sum for [start, end] of ranges
+  realStart := max [tmp, start]
+  continue if end < realStart
+  tmp = end + 1
+  end - realStart + 1
+```
