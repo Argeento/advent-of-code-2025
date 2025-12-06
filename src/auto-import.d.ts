@@ -32,7 +32,8 @@ declare global {
   const countChars: typeof utils.countChars;
   const abs: typeof utils.abs;
   const sign: typeof utils.sign;
-  const toChunks: typeof utils.toChunks
+  const toChunks: typeof utils.toChunks;
+  const rotateMatrixLeft: typeof utils.rotateMatrixLeft
 
   // Lodash
   const templateSettings: typeof lodash.templateSettings;

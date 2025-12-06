@@ -11,7 +11,7 @@ export function getNumbers(input: string): number[]
 
 export function getArray2d<T extends string>(
   input: string,
-  splitBy = ''
+  splitBy = '' as string | RegExp
 ): T[][]
   getLines(input).map &.split(splitBy) as T[]
 
@@ -168,3 +168,8 @@ export class UniquePoints extends Array<Point> {
     this.points.add `${point.x},${point.y}`
     super.push point
 }
+
+export function rotateMatrixLeft<T>(matrix: T[][]): T[][]
+  return [] if !matrix || matrix.# is 0 || matrix.0# is 0
+  Array.from { length: matrix.0# }, (_, colIndex) => 
+    matrix.map &[&# - 1 - colIndex]

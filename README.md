@@ -79,3 +79,18 @@ log sum for [start, end] of ranges
   tmp = end + 1
   end - realStart + 1
 ```
+
+## Day 6: Trash Compactor ⭐⭐
+
+```ts
+[...a, b] := input.trim().split '\n'
+lines := a.map toNumbers
+signs := b.match(/\S/g)!
+rotated := rotateMatrixLeft getArray2d input
+
+log sum for sign, i of signs
+  eval lines.map(&[i]).join sign
+
+log sum for c of rotated.map(&.join '').join('').split '     '
+  eval toNumbers(c).join c.-1
+```
