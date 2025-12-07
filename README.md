@@ -94,3 +94,22 @@ log sum for sign, i of signs
 log sum for c of rotated.map(&.join '').join('').split '     '
   eval toNumbers(c).join c.-1
 ```
+
+## Day 7: Laboratories ⭐⭐
+
+```ts
+grid := getArray2d input
+beams .= grid.0.map & is 'S' ? 1 : 0
+splits .= 0
+
+for line of grid
+  nextBeams := [...beams]
+  for char, x of line when beams[x] and char is '^'
+    splits += 1
+    nextBeams[x] = 0
+    nextBeams[x - 1] += beams[x]
+    nextBeams[x + 1] += beams[x]
+  beams = nextBeams
+
+log splits, sum beams
+```
