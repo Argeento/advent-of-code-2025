@@ -1,0 +1,25 @@
+{ UndirectedGraph } from graphology
+{ connectedComponents, countConnectedComponents } from graphology-components
+
+boxes := getLines(input).map(toNumbers).map toKeys 'x', 'y', 'z' 
+graph := new UndirectedGraph
+graph.addNode i for i of [0...boxes#]
+
+edges := flatMap 
+  for boxA, i of boxes
+    for boxB, j of boxes[i<..]
+      distance: getDistance3d boxA, boxB
+      nodeA: i
+      nodeB: j + i + 1
+|> .sort (a, b) => a.distance - b.distance
+
+for edge of edges[...1000]
+  graph.addEdge edge.nodeA, edge.nodeB 
+  
+log connectedComponents(graph).map(.#).sort(desc)[...3].reduce(multiply)
+
+lastEdge := edges[1000..].find (edge) =>
+  graph.addEdge edge.nodeA, edge.nodeB
+  countConnectedComponents(graph) is 1
+
+log boxes[lastEdge!nodeA].x * boxes[lastEdge!nodeB].x

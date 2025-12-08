@@ -30,6 +30,9 @@ export function getManhattanDistance(
 export function getDistance(a: Point, b: Point): number
   Math.hypot a.x - b.x, a.y - b.y
 
+export function getDistance3d(a: Point3d, b: Point3d): number
+  Math.hypot a.x - b.x, a.y - b.y, a.z - b.z
+
 export function match<
   Variant extends PropertyKey,
   Options extends Record<Variant, () => any>

@@ -10,6 +10,7 @@ declare global {
   const desc: typeof utils.desc;
   const getManhattanDistance: typeof utils.getManhattanDistance;
   const getDistance: typeof utils.getDistance;
+  const getDistance3d: typeof utils.getDistance3d;
   const match: typeof utils.match;
   const getColumn: typeof utils.getColumn;
   const loop2d: typeof utils.loop2d;
