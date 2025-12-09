@@ -1,0 +1,23 @@
+reds := getLines(input).map toNumbers
+lines := reds.map (red, i) => [red, reds[i + 1] ?? reds.0] |> .map normalizeLine
+p1Max .= -Infinity
+p2Max .= -Infinity
+
+for redA, i of reds
+  for redB of reds[i<..]
+    [x1, x2, y1, y2] := normalizeLine [redA, redB]
+    area := (x2 - x1 + 1) * (y2 - y1 + 1)
+    p1Max = area if area > p1Max
+    p2Max = area if area > p2Max and not lines.some [lx1, lx2, ly1, ly2] =>
+      lx1 is lx2
+        ? lx1 > x1 and lx1 < x2 and ly2 > y1 and ly1 < y2
+        : ly1 > y1 and ly1 < y2 and lx2 > x1 and lx1 < x2
+
+function normalizeLine(line: number[][])
+  x1 := min [line.0.0, line.1.0]
+  x2 := max [line.0.0, line.1.0]
+  y1 := min [line.0.1, line.1.1]
+  y2 := max [line.0.1, line.1.1]
+  [x1, x2, y1, y2]
+
+log p1Max, p2Max
