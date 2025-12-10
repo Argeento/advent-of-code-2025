@@ -15,6 +15,7 @@
     "dotenv": "^17.2.3",
     "graphology": "^0.26.0",
     "graphology-components": "^1.5.4",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "yalps": "^0.6.3"
   }
 }

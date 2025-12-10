@@ -1,0 +1,39 @@
+{ solve } from yalps
+
+machines := getLines(input).map (line) =>
+  targetLights: line.match(/[.#]+/)!0.split('').map & is '#'
+  buttons: line.match(/\(.*?\)/g)!map toNumbers
+  requiredJoltages: line.match(/{.*/)!0 |> toNumbers
+
+log sum for { buttons, targetLights } of machines
+  minClicks .= Infinity
+  combinations := for i of [0...2**buttons#]
+    [...i.toString(2).padStart(buttons#, '0')].map & is '1'
+
+  for combination of combinations
+    lights := false for _ of targetLights
+    for button, i of buttons when combination[i] is true
+       lights[nr] = not lights[nr] for nr of button
+    if isEqual lights, targetLights
+      minClicks = min [minClicks, compact(combination)#]
+
+  minClicks
+
+log sum for { buttons, requiredJoltages } of machines
+  constraints: any := {}
+  for req, i of requiredJoltages
+    constraints.`joltage_${i}` = equal: req
+
+  variables: any := {}
+  for button, i of buttons
+    variables.`button_${i}` = press: 1
+    for nr of button
+      variables.`button_${i}`.`joltage_${nr}` = 1
+
+  solve
+    direction: 'minimize'
+    objective: 'press'
+    constraints: constraints
+    variables: variables
+    integers: keys variables
+  |> .result
