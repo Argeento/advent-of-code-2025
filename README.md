@@ -215,3 +215,33 @@ log sum for { buttons, requiredJoltages } of machines
     integers: keys variables
   |> .result
 ```
+
+## Day 11: Reactor ⭐⭐
+
+```ts
+{ DirectedGraph } from graphology
+
+devices := getLines input.replaceAll ':', ''
+  .map(.split ' ').map [name, ...outputs] => { name, outputs }
+
+graph := new DirectedGraph
+graph.addNode 'out'
+
+for device of devices
+  graph.addNode device.name
+
+for device of devices
+  for output of device.outputs
+    graph.addEdge device.name, output
+
+function countPaths(start: string, end: string)
+  moveData := memoize (node: string): number =>
+    if node is end then 1
+    else sum graph.mapOutNeighbors node, moveData
+  moveData start
+
+log countPaths 'you', 'out'
+log (+)
+  countPaths('svr', 'fft') * countPaths('fft', 'dac') * countPaths 'dac', 'out'
+  countPaths('svr', 'dac') * countPaths('dac', 'fft') * countPaths 'fft', 'out'
+```
