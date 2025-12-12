@@ -245,3 +245,12 @@ log (+)
   countPaths('svr', 'fft') * countPaths('fft', 'dac') * countPaths 'dac', 'out'
   countPaths('svr', 'dac') * countPaths('dac', 'fft') * countPaths 'fft', 'out'
 ```
+
+## Day 12: Christmas Tree Farm ⭐⭐
+
+```ts
+getLines input.split('\n\n').6
+  .map toNumbers
+  .filter [w, h, ...p] => w * h > sum p.map (*6.66)
+  .# |> log
+```
