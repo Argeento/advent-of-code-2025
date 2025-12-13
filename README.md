@@ -251,6 +251,6 @@ log (+)
 ```ts
 getLines input.split('\n\n').6
   .map toNumbers
-  .filter [w, h, ...p] => w * h > sum p.map (*6.66)
+  .filter [w, h, ...p] => w * h > 7 * sum p
   .# |> log
 ```
